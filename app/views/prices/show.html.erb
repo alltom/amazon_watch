@@ -1,0 +1,18 @@
+<p>
+  <b>Product:</b>
+  <%=h @price.product_id %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @price.price %>
+</p>
+
+<p>
+  <b>Observation date:</b>
+  <%=h @price.observation_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_price_path(@price) %> |
+<%= link_to 'Back', prices_path %>
