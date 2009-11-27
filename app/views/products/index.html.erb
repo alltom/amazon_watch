@@ -1,20 +1,26 @@
 <h1>Listing products</h1>
 
+<p><%= link_to "Import Price Changes from Amazon", batch_edit_prices_path %></p>
+
 <table>
   <tr>
     <th>Name</th>
+    <th>Min Price</th>
+    <th>Cur Price</th>
+    <th>Max Price</th>
+    <th>Avg Price</th>
   </tr>
 
 <% @products.each do |product| %>
   <tr>
     <td><%=h product.name %></td>
+    <td style="color: red"><%= min_price_diff_or_blank(product) %></td>
+    <td><%= product.current_price %></td>
+    <td style="color: blue"><%= max_price_diff_or_blank(product) %></td>
+    <td><%= product.average_price %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Edit', edit_product_path(product) %></td>
     <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New product', new_product_path %>

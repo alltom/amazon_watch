@@ -2,10 +2,13 @@
 
 <% form_tag(batch_update_prices_path, :method => :post) do %>
   <p>
-    Paste the updated prices paragraphs from Amazon.<br />
+    Go to your Amazon shopping cart. If there is a box of alerts at the top listing price changes
+    on items in your cart, paste its entire contents into the box below.<br />
     <%= text_area_tag :prices, @text, :rows => 20, :cols => 100 %>
   </p>
   <p>
     <%= submit_tag 'Update' %>
   </p>
 <% end %>
+
+<p><%= link_to "Back to Products List", products_path %></p>

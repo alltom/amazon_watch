@@ -67,7 +67,7 @@ class PricesController < ApplicationController
   def batch_update
     if Price.batch_update request[:prices]
       flash[:notice] = "success"
-      redirect_to prices_url
+      redirect_to products_url
     else
       flash[:error] = "couldn't save"
       @text = request[:prices]
