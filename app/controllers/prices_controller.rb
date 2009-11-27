@@ -59,6 +59,21 @@ class PricesController < ApplicationController
       end
     end
   end
+  
+  def batch_edit
+    @text = ""
+  end
+  
+  def batch_update
+    if Price.batch_update request[:prices]
+      flash[:notice] = "success"
+      redirect_to prices_url
+    else
+      flash[:error] = "couldn't save"
+      @text = request[:prices]
+      render :action => :batch_edit
+    end
+  end
 
   def destroy
     @price = Price.find(params[:id])

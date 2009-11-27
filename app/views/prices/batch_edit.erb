@@ -1,0 +1,11 @@
+<h1>Bulk Update Prices</h1>
+
+<% form_tag(batch_update_prices_path, :method => :post) do %>
+  <p>
+    Paste the updated prices paragraphs from Amazon.<br />
+    <%= text_area_tag :prices, @text, :rows => 20, :cols => 100 %>
+  </p>
+  <p>
+    <%= submit_tag 'Update' %>
+  </p>
+<% end %>
