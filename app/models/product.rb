@@ -18,4 +18,12 @@ class Product < ActiveRecord::Base
   def max_price
     prices.maximum(:price)
   end
+  
+  def <=>(product)
+    if current_price - max_price == product.current_price - product.max_price
+      (current_price - min_price) <=> (product.current_price - product.min_price)
+    else
+      (current_price - max_price) <=> (product.current_price - product.max_price)
+    end
+  end
 end
