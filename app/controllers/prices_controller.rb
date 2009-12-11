@@ -65,8 +65,8 @@ class PricesController < ApplicationController
   end
   
   def batch_update
-    if Price.batch_update request[:prices]
-      flash[:notice] = "success"
+    if @batch_updated = Price.batch_update(request[:prices])
+      flash[:notice] = "updated prices for: #{@batch_updated.map(&:name).join(", ")}"
       redirect_to products_url
     else
       flash[:error] = "couldn't save"
